@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja de eBooks | Seu Nome</title>
+  <meta name="description" content="Página de vendas dos seus eBooks. Conheça os títulos, veja depoimentos e compre com segurança." />
+  <meta property="og:title" content="Loja de eBooks" />
+  <meta property="og:description" content="Conheça e compre seus eBooks favoritos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=eBooks" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== ESTILOS ===== */
+    :root {
+      --bg: #0b1220;
+      --card: #121a2b;
+      --muted: #9fb0d0;
+      --text: #e6eefc;
+      --primary: #0ea5e9;
+      --primary-900: #0b84ba;
+      --accent: #22c55e;
+      --danger: #ef4444;
+      --ring: 0 0 0 3px rgba(14,165,233,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.12), transparent 60%),
+                  radial-gradient(900px 500px at 110% -10%, rgba(34,197,94,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none }
+    img { max-width: 100%; display: block }
+    .container { width: min(1200px, 92%); margin: 0 auto }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(11,18,32,.9), rgba(11,18,32,.65) 70%, rgba(11,18,32,0));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0 }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), #38bdf8); display: grid; place-items: center; box-shadow: var(--shadow) }
+    .brand span { font-size: 18px }
+    .nav a.btn { padding: 10px 16px; border-radius: 12px; background: var(--primary); color: #04101c; font-weight: 700; transition: transform .15s ease, background .2s }
+    .nav a.btn:hover { transform: translateY(-1px); background: #38bdf8 }
+    .hero { display: grid; grid-template-columns: 1.2fr .9fr; gap: 40px; align-items: center; padding: 56px 0 36px }
+    .hero h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.1; margin: 0 0 12px }
+    .hero p { color: var(--muted); margin: 0 0 22px }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap }
+    .btn-primary { background: var(--primary); color: #05131f; padding: 14px 18px; border: 0; border-radius: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow); transition: transform .15s ease, filter .2s }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05) }
+    .btn-ghost { background: rgba(255,255,255,.06); color: var(--text); padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); font-weight: 700 }
+    .hero .stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 20px }
+    .stat { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 14px; text-align: center }
+    .stat b { display: block; font-size: 18px }
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 18px; box-shadow: var(--shadow) }
+    .cover { aspect-ratio: 4/5; border-radius: 14px; background: linear-gradient(135deg, #1f2937, #0b1727); border: 1px solid rgba(255,255,255,.08); display: grid; place-items: center; font-weight: 800; letter-spacing: .6px }
+    .section { padding: 40px 0 }
+    .section h2 { font-size: clamp(22px, 3vw, 34px); margin: 0 0 12px }
+    .muted { color: var(--muted) }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; overflow: hidden; transition: transform .15s ease, box-shadow .2s }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow) }
+    .card .thumb { aspect-ratio: 16/10; background: linear-gradient(135deg, rgba(14,165,233,.25), rgba(34,197,94,.20)); border-bottom: 1px solid rgba(255,255,255,.06) }
+    .card .body { padding: 16px }
+    .price { display: inline-block; background: rgba(34,197,94,.14); color: #bbf7d0; border: 1px solid rgba(34,197,94,.35); padding: 6px 10px; border-radius: 999px; font-weight: 800; font-size: 14px }
+    .btn-buy { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px; padding: 12px; border-radius: 12px; border: 0; cursor: pointer; font-weight: 800; color: #05131f; background: linear-gradient(180deg, #22d3ee, #0ea5e9); box-shadow: var(--shadow) }
+    .btn-buy:hover { filter: brightness(1.05) }
+    .testimonials { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px }
+    .quote { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 16px }
+    .quote small { color: var(--muted) }
+    .faq { max-width: 900px; margin: 0 auto }
+    details { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px }
+    summary { cursor: pointer; font-weight: 700 }
+    footer { padding: 36px 0; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06) }
+    @media (max-width: 980px){ .hero { grid-template-columns: 1fr } .grid, .testimonials { grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 640px){ .grid, .testimonials { grid-template-columns: 1fr } .nav a.btn { display: none } }
+    .whatsapp { position: fixed; right: 16px; bottom: 16px; z-index: 60 }
+    .whatsapp a { display: grid; place-items: center; width: 56px; height: 56px; background: #25D366; color: #06230f; border-radius: 50%; font-weight: 900; border: 2px solid rgba(255,255,255,.7); box-shadow: var(--shadow) }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">📘</div>
+        <span>Loja de eBooks</span>
+      </div>
+      <nav>
+        <a href="#ebooks" class="btn">Ver eBooks</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Aprenda mais. Evolua mais. <br /> Leve seus <u>eBooks</u> favoritos hoje.</h1>
+        <p class="muted">Títulos práticos e diretos ao ponto para acelerar sua carreira e seus projetos. Arquivos em PDF/EPUB liberados na hora após a compra.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#comprar-agora">Comprar agora</a>
+          <a class="btn-ghost" href="#ebooks">Ver catálogo</a>
+        </div>
+        <div class="hero stats">
+          <div class="stat"><b>+4.800</b><span>alunos</span></div>
+          <div class="stat"><b>4.9★</b><span>avaliação média</span></div>
+          <div class="stat"><b>Downloads</b><span>imediatos</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="img/musculacao.png" alt="Capa do eBook Musculação e Nutrição: O Guia Completo para Resultados Rápidos" class="cover">
+        <p class="muted" style="margin-top:10px">Destaque do mês: <b>Musculação e Nutrição: O Guia Completo para Resultados Rápidos</b>. Guia prático para conquistar resultados rápidos com treino e alimentação otimizados. <span class="price" style="display:inline-block; margin-top:8px">R$ 29,99</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="ebooks">
+      <h2>Catálogo de eBooks</h2>
+      <p class="muted">Clique em “Comprar agora” para ir ao seu link de pagamento.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Capa do eBook Introdução ao Emagrecimento Saudável">
+            <img src="img/comofazerdietaparaemagrecer.jpg" alt="Capa do eBook Introdução ao Emagrecimento Saudável">
+          </div>
+          <div class="body">
+            <h3>Introdução ao Emagrecimento Saudável</h3>
+            <p class="muted">Guia inicial para emagrecer de forma saudável e sustentável.</p>
+            <span class="price">R$ 50,00</span>
+            <a class="btn-buy" href="https://pay.hotmart.com/Q99568200C?bid=1755254223554">Comprar agora</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" role="img" aria-label="Capa do eBook Musculação e Nutrição: O Guia Completo para Resultados Rápidos">
+            <img src="img/musculacao.png" alt="Capa do eBook Musculação e Nutrição: O Guia Completo para Resultados Rápidos">
+          </div>
+          <div class="body">
+            <h3>Musculação e Nutrição: O Guia Completo para Resultados Rápidos</h3>
+            <p class="muted">Guia prático para conquistar resultados rápidos com treino e alimentação otimizados.</p>
+            <span class="price">R$ 29,99</span>
+            <a class="btn-buy" href="https://hotmart.com/pt-br/marketplace/produtos/musculacao-e-nutricao-o-guia-completo-para-resultados-rapidos/P101372013Y">Comprar agora</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap">
+      <small>© <span id="year"></span> Seu Nome. Todos os direitos reservados.</small>
+      <small><a href="#" style="color:inherit">Política de Privacidade</a> · <a href="#" style="color:inherit">Termos</a> · <a href="#" style="color:inherit">Suporte</a></small>
+    </div>
+  </footer>
+
+  <div class="whatsapp">
+    <a href="https://wa.me/5599999999999" target="_blank" aria-label="Falar no WhatsApp">✆</a>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el){ 
+        a.addEventListener('click', e => {
+          e.preventDefault(); 
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
